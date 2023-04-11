@@ -1,0 +1,20 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <h1>Blogs</h1>
+    <h2>Количество новостей {{ blogs.count }}</h2>
+    {% for news in blogs %}
+        <a href="{% url 'blog:detail' news.id %}"><h2>{{ news.title }}</h2></a>
+        <h5>{{ news.date | date:'M d Y'}}</h5>
+        <p>{{ news.description | striptags | truncatechars:100}}</p>
+    {% endfor %}
+</head>
+<body>
+
+</body>
+</html>
+{% endblock %}
